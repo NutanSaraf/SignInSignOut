@@ -1,0 +1,119 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+.heading{color: blue; padding:20px; text-align: center; font-weight: bold; margin: o auto;}
+.Test{margin: 0 auto; padding:10px; font-weight: bold; color:#0dc7b7; text-align: center;}
+.Output{margin: 0 auto; padding:10px; font-weight: bold; color:#064785; text-align: center;}
+.title{background-color: rgb(10, 30, 146); color: #fff; padding: 20px; text-align: center; font-size: 25px; font-weight: bold;}
+.Box{background-color: #0b3002; color:rgb(189, 235, 191); text-align: center; padding: 20px; border:1px solid #39e60e;}
+#root div img{
+  margin: 0 auto;
+  text-align: center;
+}
+.effect{text-align: center; margin: 0 auto;}
+.effect button{background-color:#f1991e; color:#000; border:#d26604 1px solid; padding:10px; line-height: 25px; font-size: 14px;cursor: pointer; width:10%;}
+.login {
+  width: 400px;
+  margin: 16px auto 0px auto;
+  font-size: 16px;
+}
+
+/* Reset top and bottom margins from certain elements */
+.login-header,
+.login p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* The triangle form is achieved by a CSS hack */
+.login-triangle {
+  width: 0;
+  margin-right: auto;
+  margin-left: auto;
+  border: 12px solid transparent;
+  border-bottom-color: #28d;
+}
+
+.login-header {
+  /*background: #28d;*/
+  background: rgba(255,255,255,.2);
+  padding: 20px;
+  font-size: 1.4em;
+  font-weight: normal;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.login-container {
+ /* background: #ebebeb;*/
+  background: #395c6b;
+  padding: 12px;
+}
+
+/* Every row inside .login-container is defined with p tags */
+.login p {
+  padding: 12px;
+}
+
+.login input {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  border-width: 1px;
+  border-style: solid;
+  padding: 16px;
+  outline: 0;
+  font-family: inherit;
+  font-size: 0.95em;
+}
+
+.login input[type="email"],
+.login input[type="password"] {
+  background: #fff;
+  border-color: #bbb;
+  color: #555;
+}
+
+/* Text fields' focus effect */
+.login input[type="email"]:focus,
+.login input[type="password"]:focus {
+  border-color: #888;
+}
+
+.login input[type="submit"] {
+  background: #e27152;
+  border-color: transparent;
+  color: #fff;
+  cursor: pointer;
+  width: 94%;
+  display: block;
+  margin: 0 auto;
+  font-weight: bold;;
+}
+
+.login input[type="submit"]:hover {
+  background: #e78a71;
+}
+
+/* Buttons' focus effect */
+.login input[type="submit"]:focus {
+  border-color: #05a;
+}
+.welcometext{text-align: center; color:#17c;}
+.login div{background: #28d; color:#fff;padding: 12px;}
+  .login div a{color:#fff;}
+.logform{width: 400px;margin: 0 auto;font-size: 16px;}
+.logform button{background: #28d; color:#fff;padding: 12px; border: 0; margin: 0 auto; width:100%; cursor:pointer;}
+
+/******tab style***/

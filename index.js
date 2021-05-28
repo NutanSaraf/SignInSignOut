@@ -28,7 +28,6 @@ class MyLoggedFOrm extends React.Component{
         <form class="login-container">
         <h2 class="login-header">Hello {this.props.name}</h2>
         <h2>You have successfully logged in</h2>
-        <h2>Your password is {this.props.passName}</h2>
         </form>
         </div>
     );

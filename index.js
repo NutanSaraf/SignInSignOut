@@ -2,85 +2,103 @@ import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-const Welcome = ({user, onSignOut})=> {
- return (
-    <div>
-      Welcome <strong>{user.username}</strong>!
-      <a href="javascript:;" onClick={onSignOut}>Sign out</a>
-    </div>
-  )
+//forms maintain state
+/*{ <form>
+  <label>
+    Name:
+    <input type="text" name="name" />
+  </label>
+    <input type="submit" value="Submit" />
+</form>} */
+
+//we achive this in react using controlled component
+//controlled vs uncontrolled component
+//cc - react handles data
+//ucc - DOM handles data
+//mutable vs immutable state
+
+class MyLoggedFOrm extends React.Component{
+  constructor(props){
+    super(props);
+  }
+
+  render(){
+    return(
+      <div class="User">
+        <form class="login-container">
+        <h2 class="login-header">Hello {this.props.name}</h2>
+        <h2>You have successfully logged in</h2>
+        <h2>Your password is {this.props.passName}</h2>
+        </form>
+        </div>
+    );
+  }
+
 }
 
-class LoginForm extends React.Component {
- 
-  handleSignIn(e) {
-    e.preventDefault()
-    let username = this.refs.username.value
-    let password = this.refs.password.value
-    this.props.onSignIn(username, password)
-  }
-  
-  render() {
-    return (
-      <div class="login">
-      <form class="login-container" onSubmit={this.handleSignIn.bind(this)}>
-        <h2 class="login-header">Sign in</h2>
-        <p><input type="text" ref="username" placeholder="enter you username" required /></p>
-       <p><input type="password" ref="password" placeholder="enter password" required /></p>
-        <input type="submit" value="Login" />
-      </form>
-      </div>
-    )
-  }
-
-}
-
-
-class Appform extends React.Component {
-  
-  constructor(props) {
-    super(props)
-    this.state = {
-      user: null
-    }
-  }
-
-  signIn(username, password) {
-    this.setState({
-      user: {
-        username,
-        password,
-      }
-    })
-  }
-  
-  signOut() {
-    this.setState({user: null})
-  }
-  
-  render() {
-    return (
-      <div class="welcometext">
-        <h1>My App</h1>
-        { 
-          (this.state.user) ? 
-          <div class="login">
-            <Welcome 
-             user={this.state.user} 
-             onSignOut={this.signOut.bind(this)} 
-            />
-            </div>
-          :
-            <LoginForm 
-             onSignIn={this.signIn.bind(this)} 
-            />
-        }
-      </div>
-    )
+class MyLoginFOrm extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {value:'',password: ''};
+    this.loginUserChange = this.loginUserChange.bind(this);
+    this.loginPassChange = this.loginPassChange.bind(this);
+    this.loginSubmit = this.loginSubmit.bind(this);
     
   }
+
+  loginUserChange(event){
+    this.setState({value: event.target.value});
+  }
   
+  loginPassChange(event){
+    this.setState({password: event.target.password});
+    console.log(event.target.password);
+  }
+  loginSubmit(event){
+    alert('Are you sure you want to submit form?'+this.state.value);
+    event.preventDefault();
+    this.props.userChange(this.state.value,this.state.password);
+  }
+
+  render(){
+    return(
+      <div class="login">
+        <form class="login-container" onSubmit={this.loginSubmit}>
+        <h2 class="login-header">Sign in</h2>
+         <p><input type="text" value={this.state.value} onChange={this.loginUserChange} placeholder="Enter username" required /></p>
+          <p><input type="password" value={this.state.password} onChange={this.loginPassChange} placeholder="Enter password" required /></p>
+          <input type="submit" value="Submit" />
+        </form>
+        </div>
+    );  
+  }
+
 }
 
-ReactDOM.render(<Appform/>, document.getElementById("root"))
+class MyMainFOrm extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {name:'',password: ''};
+  }
+
+  handleUserChange(user, pass){
+    this.setState({name:user,
+      password : pass})
+  }
+
+  render(){
+    return(
+     <div> {this.state.name == '' ? (
+        <MyLoginFOrm userChange = {this.handleUserChange.bind(this)}/>
+    ) : (
+      <MyLoggedFOrm loginName = {this.state.value} passName = {this.state.password}/>
+    )} </div>
+    );
+  }
+
+}
+
+ReactDOM.render(
+  <MyMainFOrm />, document.getElementById('root')
+ );
 
